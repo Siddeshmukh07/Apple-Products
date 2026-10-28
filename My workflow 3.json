@@ -1,0 +1,127 @@
+{
+  "name": "My workflow 3",
+  "nodes": [
+    {
+      "parameters": {
+        "formTitle": "FEEDBACK",
+        "formDescription": "Feedback about Apple Products ",
+        "formFields": {
+          "values": [
+            {
+              "fieldLabel": "name",
+              "requiredField": true
+            },
+            {
+              "fieldLabel": "E-mail",
+              "fieldType": "email",
+              "requiredField": true
+            },
+            {
+              "fieldLabel": "feedback",
+              "requiredField": true
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.formTrigger",
+      "typeVersion": 2.6,
+      "position": [
+        0,
+        16
+      ],
+      "id": "1176a067-4a9f-4d28-bfe7-06c3e336cb28",
+      "name": "On form submission",
+      "webhookId": "1d9f0704-d9b6-4bbd-aba1-975b07f26293"
+    },
+    {
+      "parameters": {
+        "sendTo": "={{ $json['E-mail'] }} ",
+        "subject": "Thank you for your Valuable feedback",
+        "emailType": "text",
+        "message": "=Hii {{ $json.name }}, thank you are the feedback on our products, I really appreciate the time you have taken to reach out to us,appreciate your support ",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.2,
+      "position": [
+        224,
+        0
+      ],
+      "id": "52d5a6c3-8c64-48cb-9972-59584255a18a",
+      "name": "Send a message",
+      "webhookId": "27c327e6-da7e-42f5-a4a3-6421006d82b8",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "hMXora62lxFWeqRg",
+          "name": "Gmail account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "sendTo": "sonyyykal0@gmail.com",
+        "subject": "Hello,please check the feedback from customer ",
+        "emailType": "text",
+        "message": "Hii,please check the feedback",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.2,
+      "position": [
+        496,
+        -16
+      ],
+      "id": "3d2b41b7-5acc-4bcd-93cf-7b46e974011f",
+      "name": "Send a message1",
+      "webhookId": "4b7c6fb8-d70f-4de3-b516-9c6027e6d97a",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "hMXora62lxFWeqRg",
+          "name": "Gmail account"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "On form submission": {
+      "main": [
+        [
+          {
+            "node": "Send a message",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Send a message": {
+      "main": [
+        [
+          {
+            "node": "Send a message1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": true,
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate",
+    "timeSavedMode": "fixed",
+    "callerPolicy": "workflowsFromSameOwner",
+    "availableInMCP": false
+  },
+  "versionId": "f9cec5fd-91ed-4139-83f0-0b5dd2a8f2d0",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "5e6dd61a2a22ec732c0a20fb9d607fa0c2826e8ae850f4d4fbb6de2e55ec89e9"
+  },
+  "nodeGroups": [],
+  "id": "G474lVxsjAMOD4fc",
+  "tags": []
+}
